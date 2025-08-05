@@ -1,24 +1,18 @@
-package org.havelsan.aksy;
+package org.havelsan.aksy.question1;
 
-import org.havelsan.aksy.models.Car;
-import org.havelsan.aksy.models.Insurance;
-import org.havelsan.aksy.models.Person;
+import org.havelsan.aksy.question1.models.Car;
+import org.havelsan.aksy.question1.models.Insurance;
+import org.havelsan.aksy.question1.models.Person;
+import org.havelsan.aksy.question1.utils.InsuranceNameFinder;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.havelsan.aksy.utils.InsuranceNameFinder;
-import org.havelsan.aksy.utils.NotBlankStringFinder;
-
-public class Main {
+public class MainQuestion1 {
     public static void main(String[] args) {
         System.out.println("<<< ANSWER 1 >>>");
         System.out.println("---------------------------------------------------");
         question1Demo();
-
-        System.out.println("<<< ANSWER 2 >>>");
-        System.out.println("---------------------------------------------------");
-        question2Demo();
     }
 
     public static void question1Demo() {
@@ -46,10 +40,5 @@ public class Main {
         InsuranceNameFinder.getInsuranceNameList(people)
             .ifPresent(insuranceNameList -> insuranceNameList.
                 forEach(System.out::println));
-    }
-
-    public static void question2Demo() {
-        // Print the first non-blank string from the list
-        System.out.println(NotBlankStringFinder.findNotBlankString());
     }
 }

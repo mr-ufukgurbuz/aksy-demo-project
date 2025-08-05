@@ -1,9 +1,9 @@
-package org.havelsan.aksy.utils;
+package org.havelsan.aksy.question1.utils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.havelsan.aksy.models.Car;
-import org.havelsan.aksy.models.Insurance;
-import org.havelsan.aksy.models.Person;
+import org.havelsan.aksy.question1.models.Car;
+import org.havelsan.aksy.question1.models.Insurance;
+import org.havelsan.aksy.question1.models.Person;
 
 import java.util.ArrayList;
 import java.util.List;

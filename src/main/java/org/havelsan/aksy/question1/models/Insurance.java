@@ -1,4 +1,4 @@
-package org.havelsan.aksy.models;
+package org.havelsan.aksy.question1.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
