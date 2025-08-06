@@ -2,10 +2,7 @@ package org.havelsan.aksy.question3;
 
 import org.havelsan.aksy.question3.models.Person;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MainQuestion3 {
@@ -55,23 +52,21 @@ public class MainQuestion3 {
         // -----------------------------------------------------------------------------
 
         // Map<String, String> oluştur. Kişi ismi -> Email.
-        // Sadece Optional olan emailer dahil edilecek,
-        // Aynı isme sahip iki kişi varsa, yaşı büyük olanın emailI kullanılacak
-        /*Map<String, String> nameToEmail = team.stream()
-                .filter(person -> person.getEmail().isPresent())
+        // Sadece Optional olan email'ler dahil edilecek,
+        // Aynı isme sahip iki kişi varsa, yaşı büyük olanın email'i kullanılacak
+        Map<String, String> nameToEmailMap = team.stream()
+                .filter(person -> person.getEmail().isPresent()) // Sadece emaili olan kişileri filtrele
                 .collect(Collectors.toMap(
-                        Person::getName,
-                        person -> person.getEmail().get(),
-                        (existingEmail, newEmail) -> {
-                            // Eğer aynı isimde iki kişi varsa, yaşı büyük olanın email'ini kullan
-                            return team.stream()
-                                    .filter(p -> p.getName().equals(existingEmail))
-                                    .max(Comparator.comparingInt(Person::getAge))
-                                    .map(Person::getEmail)
-                                    .orElse(newEmail);
-                        }
+                        Person::getName, // Anahtar olarak ismi kullan
+                        person -> person.getEmail().get(), // Değer olarak emaili kullan
+                        (existingName, newEmail) ->
+                                team.stream()
+                                        .filter(p -> p.getName().equals(existingName)) // Aynı isme sahip kişileri filtrele
+                                        .max(Comparator.comparingInt(Person::getAge))
+                                        .flatMap(Person::getEmail) // Eğer sonuç yoksa boş Optional döndür
+                                        .orElse("") // Boş Optional ise boş string döndür
                 ));
 
-        System.out.println("Kişi İsimleri ve Email'leri: " + nameToEmail);*/
+        System.out.println("Kişi İsimleri ve Email'leri: " + nameToEmailMap);
     }
 }
